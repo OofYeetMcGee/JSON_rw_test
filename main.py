@@ -29,6 +29,12 @@ def pickle_load_conf(file_name):
         return lst
 
 
+def print_dict_elements(obj):
+
+    for key in obj.keys():
+        print(f'{key}: {obj[key]}')
+
+
 if __name__ == '__main__':
 
     # Test Config, a list of dictionaries with keys for ID, pan, and tilt values
@@ -65,4 +71,8 @@ if __name__ == '__main__':
 
     # Load config from Pickle and print
     pan_tilt_pickle_loaded = pickle_load_conf('conf.pickle')
-    print(pan_tilt_pickle_loaded)
+    # This loop is just for example, the returned object should be the same for JSON or Pickle
+    for obj in pan_tilt_pickle_loaded:
+        print_dict_elements(obj)
+
+    print(pan_tilt_json_loaded == pan_tilt_pickle_loaded)
