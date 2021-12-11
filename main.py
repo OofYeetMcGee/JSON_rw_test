@@ -16,6 +16,7 @@ def json_load_conf(file_name):
 
 
 def pickle_save_conf(lst, file_name):
+    # Pickle needs bytes flag
     with open(file_name, 'wb') as conf_file:
         pickle.dump(lst, conf_file)
 
@@ -30,6 +31,7 @@ def pickle_load_conf(file_name):
 
 if __name__ == '__main__':
 
+    # Test Config, a list of dictionaries with keys for ID, pan, and tilt values
     pan_tilt_config = [
         {
             'id': 1,
@@ -53,13 +55,14 @@ if __name__ == '__main__':
         },
     ]
 
+    # Save list to JSON and Pickle formats
     json_save_conf(pan_tilt_config, 'conf.json')
     pickle_save_conf(pan_tilt_config, 'conf.pickle')
 
-    pan_tilt_config = None
-
+    # Load config from JSON & print
     pan_tilt_json_loaded = json_load_conf('conf.json')
     print(pan_tilt_json_loaded)
 
+    # Load config from Pickle and print
     pan_tilt_pickle_loaded = pickle_load_conf('conf.pickle')
     print(pan_tilt_pickle_loaded)
